@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+ {% load static %}
+  {% block head %}
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  #wrapper {
+    min-height: 100%;
+  }
+</style>
+{% endblock %} 
+{%block title %} Inventory Management System {% endblock %} 
+{% block body %}
+<div id="wrapper" class="d-flex h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">StoreIT...</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Hey...Hi Here...</h1>
+      <p class="lead">
+        We At storeIT help you to get your Inventory going all time... <br />
+        Have a look at our features...
+      </p>
+      <p class="lead">
+        <a
+          href="#"
+          class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+          style="color: black"
+          >Learn more</a
+        >
+      </p>
+      <div class="container mt-3" style="display: flex;
+justify-content: center;"> 
+        <div class="row">
+          <div class="col-lg-3 mx-auto text-center">
+           
+                <h4> <a href="{% url 'main' function='product' %}"> PRODUCT...</a></h4>
+           
+          </div>
+          <div class="col-lg-3 mx-auto text-center">
+            
+                <h4> <a href="{% url 'main' function='location' %}"> LOCATION...</a></h4>
+            
+          </div>
+          <div class="col-lg-3 mx-auto text-center">
+            
+                <h4> <a href="{% url 'main' function='product_movement' %}">PRODUCT MOVEMENT...</a> </h4>
+            
+          </div>
+          <div class="col-lg-3 mx-auto text-center">
+            
+                <h4> <a href="{% url 'balance'  %}">SEE BALANCE...</a> </h4>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-auto text-white-50"></footer>
+  </div>
+</div>
+{% endblock %} 
+{% block js %} 
+{% endblock %}

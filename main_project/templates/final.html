@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load static %} {% block head %} {% endblock %}
+{%block title %} Inventory Management System {% endblock %} {% block body %}
+<div class="container">
+  <h2 class="text-center">Location : {{ l_name }}</h2>
+</div>
+<table class="table mt-3 text-center">
+  <h4>Products Moving Out</h4>
+  <thead>
+    <tr>
+      <th scope="col">product</th>
+      <th scope="col">Warehouse location</th>
+      <th scope="col">quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in m_out %}
+    <tr>
+      <th scope="row">{{data.product_id.product_name}}</th>
+      <th scope="row">{{data.from_location.location}}</th>
+      <th scope="row">{{data.qty}}</th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table class="table mt-3 text-center">
+  <h4>Products In Transit</h4>
+  <thead>
+    <tr>
+      <th scope="col">product</th>
+      <th scope="col">Warehouse location</th>
+      <th scope="col">quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in intransit %}
+    <tr>
+      <th scope="row">{{data.product_id.product_name}}</th>
+      <th scope="row">
+        {{data.from_location.location}}...{{data.to_location.location}}
+      </th>
+      <th scope="row">{{data.qty}}</th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table class="table mt-3 text-center">
+  <h4>Products Moving In</h4>
+  <thead>
+    <tr>
+      <th scope="col">product</th>
+      <th scope="col">Warehouse location</th>
+      <th scope="col">quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in m_in %}
+    <tr>
+      <th scope="row">{{data.product_id.product_name}}</th>
+      <th scope="row">{{data.to_location.location}}</th>
+      <th scope="row">{{data.qty}}</th>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %} {% block js %} {% endblock %}

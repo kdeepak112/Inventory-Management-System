@@ -1,0 +1,246 @@
+{% extends 'base.html' %} {% load static %} {% block head %} {% endblock %}
+{%block title %} Inventory Management System {% endblock %} {% block body %} 
+{% if fun_name == 'product' %}
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product_ID</th>
+        <th scope="col">Product name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in info_data %}
+      <tr>
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.product_name}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="container mt-4">
+    <h1 class="text-center">Add Product</h1>
+    <form action="/operation/add/product/">
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new product name"
+          class="form-control"
+          name="add_product"
+          id="exampleInputPassword1"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="container mt-4">
+    <h1 class="text-center">Edit Product</h1>
+    <form action="/operation/edit/product/">
+      <div class="mb-3">
+        <input
+          type="number"
+          placeholder="Enter Product ID to be edited"
+          class="form-control"
+          id="exampleInputEmail1"
+          name="p_id"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new product name"
+          class="form-control"
+          name="add_product"
+          id="exampleInputPassword1"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% endif %} {% if fun_name == 'location' %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Location_ID</th>
+        <th scope="col">Location name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in info_data %}
+      <tr>
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.location}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="container mt-4">
+    <h1 class="text-center">Add Location</h1>
+    <form action="/operation/add/location/">
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new location name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="add_location"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="container mt-4">
+    <h1 class="text-center">Edit Location</h1>
+    <form action="/operation/edit/location/">
+      <div class="mb-3">
+        <input
+          type="number"
+          placeholder="Enter Location ID to be edited"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name="l_id"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new Locaion name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="add_location"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% endif %} {% if fun_name == 'product_movement' %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Movement_ID</th>
+        <th scope="col">TimeStamp</th>
+        <th scope="col">from_location</th>
+        <th scope="col">to_location</th>
+        <th scope="col">product ID</th>
+        <th scope="col">product name</th>
+        <th scope="col">quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in info_data %}
+      <tr>
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.timestamp}}</td>
+        <th scope="row">{{data.from_location.location}}</th>
+        <td>{{data.to_location.location}}</td>
+        <th scope="row">{{data.product_id.id}}</th>
+        <th scope="row">{{data.product_id.product_name}}</th>
+        <td>{{data.qty}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="container mt-4">
+    <h1 class="text-center">Add Movement</h1>
+    <form action="/operation/add/product_movement/">
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the from location name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="from_location"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the to location name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="to_location"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new Product name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="add_product"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new quantity"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="qty"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="container mt-4">
+    <h1 class="text-center">Edit Product Movement</h1>
+    <form action="/operation/edit/product_movement/">
+      <div class="mb-3">
+        <input
+          type="number"
+          placeholder="Enter the Movement_ID
+          class="form-control"
+          id="exampleInputPassword1"
+          name="m_id"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the from location name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="from_location"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the to location name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="to_location"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new Product name"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="add_product"
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Enter the new quantity"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="qty"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} {% block js %} {% endblock %}
